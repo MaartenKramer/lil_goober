@@ -9,8 +9,8 @@
                 {
                     "name": "Move",
                     "type": "PassThrough",
-                    "id": "57c13e51-c07a-4f8b-a22e-c7ec8001ee4e",
-                    "expectedControlType": "Vector3",
+                    "id": "61b17873-0a44-4b71-9e64-4dde9cdf3459",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false,
@@ -47,10 +47,20 @@
                     "priority": 0
                 },
                 {
-                    "name": "2Move",
+                    "name": "Switch",
+                    "type": "Button",
+                    "id": "aac9f888-f80e-433c-a350-c10ad65322f5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Mouse",
                     "type": "PassThrough",
-                    "id": "61b17873-0a44-4b71-9e64-4dde9cdf3459",
-                    "expectedControlType": "Axis",
+                    "id": "ad784dcb-85de-48bf-82c3-6954ff2b8c37",
+                    "expectedControlType": "Delta",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false,
@@ -79,39 +89,6 @@
                     "action": "Pickup/Scan",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "3D Vector",
-                    "id": "25c9a52c-e47d-45f6-b17a-17985d3216d7",
-                    "path": "3DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "forward",
-                    "id": "95a36039-2ca9-47c2-8fe1-2208524a2c1b",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "backward",
-                    "id": "fa9028c7-9142-4ca6-80ea-77f0599478b1",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "1D Axis",
@@ -153,7 +130,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2Move",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -164,7 +141,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "2Move",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -175,9 +152,31 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "2Move",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "85c86cfe-4f88-4f8c-a9ea-7c6c327e3d35",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e77b63aa-05a1-4839-a9fa-bd3b456651d2",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

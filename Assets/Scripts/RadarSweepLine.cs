@@ -3,27 +3,24 @@ using System.Collections;
 
 public class RadarSweepLine : MonoBehaviour
 {
-    [SerializeField] private Animator playerAnim;
+    [SerializeField] private Transform goober;
+    [SerializeField] private GameObject playerIcon;
 
     private void Start()
     {
-        playerAnim.enabled = false;
+        playerIcon.GetComponent<Animator>().enabled = false;
+        playerIcon.transform.position = new Vector3(goober.position.x, playerIcon.transform.position.y, goober.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collide");
-
         if (other.tag == "InteractObject")
-        {
-            Debug.Log("Hit");
             other.GetComponent<Animator>().Play("Pulse", -1, 0f);
-        }
 
         if (other.tag == "Player")
         {
-            Debug.Log("Hit");
-            other.GetComponent<Animator>().Play("Everything");
+            playerIcon.transform.position = new Vector3(goober.position.x, playerIcon.transform.position.y, goober.position.z);
+            playerIcon.GetComponent<Animator>().Play("Everything");
         }
     }
 
@@ -31,8 +28,8 @@ public class RadarSweepLine : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            playerAnim.enabled = true;
-            other.GetComponent<Animator>().Play("Pulse", -1, 0f);
+            playerIcon.GetComponent<Animator>().enabled = true;
+            playerIcon.GetComponent<Animator>().Play("Pulse", -1, 0f);
         }
     }
 }
