@@ -10,29 +10,54 @@ public class TakeScreenshot : MonoBehaviour
 
     public InputActionReference screenshotInput;
 
+    public Animator overlayAnimation;
+
+    public Camera gooberCamera;
+
     private void Update()
     {
-        if (screenshotInput.action.IsPressed())
+        if (screenshotInput.action.WasPressedThisFrame())
         {
-            StartCoroutine(TakeScreenshotAndShow());
+            TakeScreenshotAndShow();
+
+            PlayOverlayAnimation();
         }    
     }
 
-    private IEnumerator TakeScreenshotAndShow()
+    Texture2D RTImage(Camera gooberCamera)
     {
-        yield return new WaitForEndOfFrame();
+        // The Render Texture in RenderTexture.active is the one
+        // that will be read by ReadPixels.
+        var currentRT = RenderTexture.active;
+        RenderTexture.active = gooberCamera.targetTexture;
 
-        Texture2D screenshot = ScreenCapture.CaptureScreenshotAsTexture();
+        // Render the camera's view.
+        gooberCamera.Render();
 
-        Texture2D newScreenshot = new Texture2D(screenshot.width, screenshot.height, TextureFormat.RGB24, false);
-        newScreenshot.SetPixels(screenshot.GetPixels());
-        newScreenshot.Apply();
+        // Make a new texture and read the active Render Texture into it.
+        Texture2D screenshot = new Texture2D(gooberCamera.targetTexture.width, gooberCamera.targetTexture.height);
+        screenshot.ReadPixels(new Rect(0, 0, gooberCamera.targetTexture.width, gooberCamera.targetTexture.height), 0, 0);
+        screenshot.Apply();
 
-        Destroy(screenshot);
+        // Replace the original active Render Texture.
+        RenderTexture.active = currentRT;
+        return screenshot;
+    }
 
-        Sprite screenshotSprite = Sprite.Create(newScreenshot, new Rect(0, 0, newScreenshot.width, newScreenshot.height), new Vector2(0.5f, 0.5f));
+    private void TakeScreenshotAndShow()
+    {
+
+    
+        Texture2D screenshot = RTImage(gooberCamera);
+
+        Sprite screenshotSprite = Sprite.Create(screenshot, new Rect(0, 0, screenshot.width, screenshot.height), new Vector2(0.5f, 0.5f));
 
         whereToShowScreenshot.enabled = true;
         whereToShowScreenshot.sprite = screenshotSprite;
+    }
+
+        private void PlayOverlayAnimation()
+    {
+        overlayAnimation.Play("Printing", -1, 0f);
     }
 }
