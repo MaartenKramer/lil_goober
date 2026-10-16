@@ -1012,9 +1012,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e2f6d8fa26d944bb223469965b2050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraSwitch
-  gooberCam: {fileID: 330585545}
+  gooberCam: {fileID: 373196053}
   radarCam: {fileID: 743379429030050069}
   radarButtons: {fileID: 1766593733}
+  screenshotCanvas: {fileID: 1853406760}
   switchInput: {fileID: -2344610714570937011, guid: d1793e3d0dc462047bb0c40fb7d546cd, type: 3}
   currentState: 0
   canSwitch: 0
@@ -1748,7 +1749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0

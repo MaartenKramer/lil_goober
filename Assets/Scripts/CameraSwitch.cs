@@ -7,6 +7,7 @@ public class CameraSwitch : MonoBehaviour
     [SerializeField] private Camera gooberCam;
     [SerializeField] private Camera radarCam;
     [SerializeField] private GameObject radarButtons;
+    [SerializeField] private GameObject screenshotCanvas;
 
     [SerializeField] private InputActionReference switchInput;
 
@@ -20,6 +21,7 @@ public class CameraSwitch : MonoBehaviour
     {
         currentState = State.Goober;
         radarButtons.SetActive(false);
+        screenshotCanvas.SetActive(true);
         canSwitch = false;
         StartCoroutine(SwitchCooldown());
     }
@@ -57,6 +59,7 @@ public class CameraSwitch : MonoBehaviour
         gooberCam.enabled = true;
         radarCam.enabled = false;
         radarButtons.SetActive(false);
+        screenshotCanvas.SetActive(true);
     }
 
     private void RadarState()
@@ -64,6 +67,7 @@ public class CameraSwitch : MonoBehaviour
         radarCam.enabled = true;
         gooberCam.enabled = false;
         radarButtons.SetActive(true);
+        screenshotCanvas.SetActive(false);
     }
 
     private IEnumerator SwitchCooldown()
