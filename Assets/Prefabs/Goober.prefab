@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 4469452666928725242}
   - component: {fileID: 5228249949286177944}
   - component: {fileID: 7735492696350400162}
+  - component: {fileID: 2884797856439615138}
   m_Layer: 0
   m_Name: Goober
   m_TagString: Player
@@ -335,3 +336,17 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &2884797856439615138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9114567244773557069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802f15f31e1301143b12afbc1544ba35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  interactInput: {fileID: -1365274648767145429, guid: d1793e3d0dc462047bb0c40fb7d546cd, type: 3}
+  canScan: 0

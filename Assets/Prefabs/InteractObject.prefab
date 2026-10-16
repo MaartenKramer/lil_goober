@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8915160258815576960}
-  - component: {fileID: 3683670298234772128}
+  - component: {fileID: 3088072453162239611}
   - component: {fileID: 1239241036781612827}
   - component: {fileID: 1214567644255392522}
+  - component: {fileID: 3647419185475441941}
   m_Layer: 0
   m_Name: InteractObject
   m_TagString: InteractObject
@@ -36,8 +37,8 @@ Transform:
   - {fileID: 5285876550523791838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3683670298234772128
-BoxCollider:
+--- !u!135 &3088072453162239611
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -55,8 +56,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1239241036781612827
 Animator:
   serializedVersion: 7
@@ -106,6 +107,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3647419185475441941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943930832598086831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676a2493aefdc03438b4238e80c65b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  radarIcon: {fileID: 5374075872691203865}
 --- !u!1 &4463070833051129115
 GameObject:
   m_ObjectHideFlags: 0
