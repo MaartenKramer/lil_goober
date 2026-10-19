@@ -912,10 +912,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1197952783}
     m_Modifications:
-    - target: {fileID: 2211165671397662565, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3943930832598086831, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_Name
       value: InteractObject
@@ -5226,7 +5222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.32
+      value: 4.36
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5446,7 +5442,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &916276764
 GameObject:
@@ -7865,7 +7861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.76
+      value: 8.86
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14455,8 +14451,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 24, y: 24.000006, z: 1000}
-  m_Center: {x: 12, y: 0, z: 0}
+  m_Size: {x: 24, y: 24.000006, z: 3206.211}
+  m_Center: {x: 12, y: -6.6800515e-13, z: 1103.1046}
 --- !u!212 &387759192601428021
 SpriteRenderer:
   serializedVersion: 3
