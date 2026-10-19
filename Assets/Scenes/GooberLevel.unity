@@ -18767,6 +18767,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7735492696350400162, guid: 2a2285525a8a15a47b55dff09203560d, type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9114567244773557069, guid: 2a2285525a8a15a47b55dff09203560d, type: 3}
       propertyPath: m_Name
       value: Goober
