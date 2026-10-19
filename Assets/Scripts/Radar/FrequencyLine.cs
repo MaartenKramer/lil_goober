@@ -15,12 +15,8 @@ public class FrequencyLine : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    void Update()
-    {
-        DrawLine();
-    }
 
-    private void DrawLine()
+    public void DrawLine()
     {
         float xStart = xLimits.x;
         float xFinish = xLimits.y;
