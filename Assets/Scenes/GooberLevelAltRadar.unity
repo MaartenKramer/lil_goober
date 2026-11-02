@@ -5200,6 +5200,7 @@ MonoBehaviour:
   interactableIcon4: {fileID: 2034402414}
   amplitudeTrigger: {fileID: 81001171}
   wavelengthTrigger: {fileID: 16115380}
+  ground: {fileID: 916276769}
 --- !u!1001 &900197253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5810,7 +5811,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 943269106}
-  - component: {fileID: 943269107}
   m_Layer: 0
   m_Name: ----- Radar -----
   m_TagString: Untagged
@@ -5835,19 +5835,6 @@ Transform:
   - {fileID: 852739469}
   m_Father: {fileID: 717147653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &943269107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943269105}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9702ba3497c76c144a5c36e07c7de186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LockRadarToPlayer
-  playerTransform: {fileID: 717147653}
 --- !u!1 &950944409
 GameObject:
   m_ObjectHideFlags: 0
