@@ -1,4 +1,4 @@
-//#define USE_RADARPOS
+#define USE_RADARPOS
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,15 +10,15 @@ using Math = System.Math;
 
 public class FrequencyMatchGame : MonoBehaviour
 {
-    
-    
     [SerializeField] private FrequencyLine radarLine;
     [SerializeField] private FrequencyLine antennaLine;
 
     [SerializeField] private Knob amplitudeKnob;
     [SerializeField] private Knob wavelengthKnob;
-    
-    [SerializeField] private List<GameObject> radarIcons;
+
+    public List<GameObject> interactables;
+    public List<GameObject> radarIcons;
+    [SerializeField] private GameObject iconPrefab;
 
     [SerializeField] private EventTrigger amplitudeTrigger;
     [SerializeField] private EventTrigger wavelengthTrigger;
@@ -29,46 +29,56 @@ public class FrequencyMatchGame : MonoBehaviour
     
     private float levelWidth;
     private float levelHeight;
-#if USE_RADARPOS
-    [SerializeField] private float errorMargin = 3f;
-#else
+
     [SerializeField] private float errorMargin = 0.1f;
 
-#endif
     private bool radarIsOn = false;
+
+    [SerializeField] private Vector2 playerPos;
+    [SerializeField] private Vector2 radarPos;
+    [SerializeField] private Vector2 radarOffset;
     
     void Start()
     {
+        foreach (GameObject interactable in interactables)
+        {
+            GameObject newIcon = Instantiate(iconPrefab, interactable.transform.position, interactable.transform.rotation);
+            radarIcons.Add(newIcon);
+        }
+
         foreach (GameObject radarIcon in radarIcons)
             radarIcon.SetActive(false);
 
         // Get bounds of level
         var (minBounds, maxBounds) = GetLevelBounds();
+
         // Use bounds to set amplitudes of Frequency-Lines
         levelWidth = Mathf.Abs(maxBounds.x - minBounds.x);
         levelHeight = Mathf.Abs(maxBounds.y - minBounds.y);
-        
     }
 
     void Update()
     {
+        // Compare coordinates from knob to player pos
+        playerPos = new Vector2(playerTransform.position.x, playerTransform.position.z);
+
         // KNOB VALUES [0..1].. convert to coordinates
         antennaLine.amplitude = amplitudeKnob.knobValue;
         antennaLine.wavelength = wavelengthKnob.knobValue;
         // Set knob-values and draw
+        radarLine.amplitude = (playerPos.x + levelWidth/2) / levelWidth;
+        radarLine.wavelength = (playerPos.y + levelHeight/2) / levelHeight;
         radarLine.DrawLine();
         antennaLine.DrawLine();
         // Get coordinates from the knobs..
         var x = amplitudeKnob.knobValue * levelWidth;
         var y = wavelengthKnob.knobValue * levelHeight;
-        Vector2 radarPosition = new Vector2(x, y);
+        radarPos = new Vector2(x, y) - radarOffset;
         
-        // Compare coordinates from know to player pos
-        Vector2 playerPos = new Vector2(playerTransform.position.x, playerTransform.position.y);
 
 #if (USE_RADARPOS)
 
-        if (Vector2.Distance(playerPos, radarPosition) <= errorMargin)
+        if (Vector2.Distance(playerPos, radarPos) <= errorMargin)
         {
             if (!radarIsOn)
             {
@@ -121,8 +131,8 @@ public class FrequencyMatchGame : MonoBehaviour
             var pos = vertices[i].position;
             if (pos.x < min_x) min_x = pos.x;
             if (pos.x > max_x) max_x = pos.x;
-            if (pos.y < min_y) min_y = pos.y;
-            if (pos.y > max_y) max_y = pos.y;
+            if (pos.z < min_y) min_y = pos.z;
+            if (pos.z > max_y) max_y = pos.z;
         }
         
         return (new Vector2(min_x, min_y), new Vector2(max_x, max_y));
