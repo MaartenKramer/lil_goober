@@ -31,7 +31,8 @@ public class FrequencyMatchGame : MonoBehaviour
     private float levelWidth;
     private float levelHeight;
 
-    [SerializeField] private float errorMargin = 0.1f;
+    public float distancePlayerRadar;
+    public float errorMargin = 0.1f;
 
     private bool radarIsOn = false;
 
@@ -75,11 +76,13 @@ public class FrequencyMatchGame : MonoBehaviour
         var x = amplitudeKnob.knobValue * levelWidth;
         var y = wavelengthKnob.knobValue * levelHeight;
         radarPos = new Vector2(x, y) - radarOffset;
-        
+
 
 #if (USE_RADARPOS)
 
-        if (Vector2.Distance(playerPos, radarPos) <= errorMargin)
+        distancePlayerRadar = Vector2.Distance(playerPos, radarPos);
+
+        if (distancePlayerRadar <= errorMargin)
         {
             if (!radarIsOn)
             {
