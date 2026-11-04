@@ -19,6 +19,7 @@ public class FrequencyMatchGame : MonoBehaviour
     public List<GameObject> interactables;
     public List<GameObject> radarIcons;
     [SerializeField] private GameObject iconPrefab;
+    [SerializeField] private GameObject radarParent;
 
     [SerializeField] private EventTrigger amplitudeTrigger;
     [SerializeField] private EventTrigger wavelengthTrigger;
@@ -42,7 +43,7 @@ public class FrequencyMatchGame : MonoBehaviour
     {
         foreach (GameObject interactable in interactables)
         {
-            GameObject newIcon = Instantiate(iconPrefab, interactable.transform.position, interactable.transform.rotation);
+            GameObject newIcon = Instantiate(iconPrefab, interactable.transform.position, interactable.transform.rotation, radarParent.transform);
             radarIcons.Add(newIcon);
         }
 

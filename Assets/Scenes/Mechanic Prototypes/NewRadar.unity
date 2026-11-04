@@ -1027,7 +1027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.8
+      value: 25.5
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1035,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.1
+      value: -27.3
       objectReference: {fileID: 0}
     - target: {fileID: 8915160258815576960, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1107,7 +1107,7 @@ Transform:
   m_Children:
   - {fileID: 6437186342627990527}
   - {fileID: 1546492554}
-  - {fileID: 1857180089}
+  - {fileID: 1759981713}
   - {fileID: 2068071995}
   - {fileID: 8372084932537481369}
   m_Father: {fileID: 0}
@@ -1125,6 +1125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarFollowPlayer
   playerTransform: {fileID: 717147653}
+  playerIconTransform: {fileID: 1759981713}
+  rotateRadar: 0
 --- !u!1 &291812188 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3943930832598086831, guid: 1449d4966e3a59c4fb355ce610c0166a, type: 3}
@@ -3049,6 +3051,7 @@ MonoBehaviour:
   - {fileID: 635032327}
   radarIcons: []
   iconPrefab: {fileID: 5674639693443197843, guid: 586fcf37597f0dd48b42eb875a85ddc7, type: 3}
+  radarParent: {fileID: 254213014}
   amplitudeTrigger: {fileID: 81001171}
   wavelengthTrigger: {fileID: 16115380}
   ground: {fileID: 569015313}
@@ -5191,6 +5194,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1759981712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1759981713}
+  m_Layer: 0
+  m_Name: PlayerRadarIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1759981713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759981712}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1857180089}
+  m_Father: {fileID: 254213015}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760436337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5519,7 +5554,7 @@ GameObject:
   - component: {fileID: 1857180089}
   - component: {fileID: 1857180090}
   m_Layer: 6
-  m_Name: Player RadarIcon
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5533,13 +5568,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857180088}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_LocalScale: {x: 2.9100003, y: 2.9099998, z: 2.9099998}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 254213015}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_Father: {fileID: 1759981713}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
 --- !u!212 &1857180090
 SpriteRenderer:
   serializedVersion: 3
@@ -5589,12 +5624,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: cf67f032edd617d4ab11d865d8641154, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e1fd356bc5be705499a0dd4b7020b502, type: 3}
+  m_Color: {r: 0.5396226, g: 0.5396226, b: 0.5396226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 2, y: 2.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5873,8 +5908,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 24, y: 24.000006, z: 3206.211}
-  m_Center: {x: 12, y: -6.6800515e-13, z: 1103.1046}
+  m_Size: {x: 89.26434, y: 24.000006, z: 3206.2107}
+  m_Center: {x: 44.63217, y: -6.680043e-13, z: 1103.1046}
 --- !u!4 &516154408407767144
 Transform:
   m_ObjectHideFlags: 0
@@ -7060,6 +7095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RadarSweepLine
   frequencyMatch: {fileID: 898975360}
   rotationSpeed: 150
+  radarSize: 30
 --- !u!4 &6437186342627990527
 Transform:
   m_ObjectHideFlags: 0
