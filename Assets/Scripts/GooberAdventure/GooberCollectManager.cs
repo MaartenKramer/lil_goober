@@ -5,13 +5,18 @@ using System.Collections;
 public class GooberCollectManager : MonoBehaviour
 {
     public static GooberCollectManager instance;
+    [SerializeField] private FrequencyMatchGame frequencyMatch;
 
-    [SerializeField] private GameObject canvas;
-    [SerializeField] private TextMeshProUGUI scanText;
-    [SerializeField] private float textOnScreenTime = 1f;
+    [SerializeField] private PlayerUI playerUI;
+    [SerializeField] private string baseReturnText;
 
     [SerializeField] private int totalScanAmount = 4;
     [SerializeField] private int currentScanAmount = 0;
+
+    [SerializeField] private GameObject bunkerCollider;
+
+    [SerializeField] private GameObject radarPlayerIcon;
+    [SerializeField] private GameObject goober;
 
     private void Awake()
     {
@@ -29,35 +34,38 @@ public class GooberCollectManager : MonoBehaviour
 
     void Start()
     {
-        scanText.enabled = false;
+        bunkerCollider.SetActive(false);
     }
 
-    public void ScanMade()
+    public void ScanMade(int index)
     {
+        if (index == frequencyMatch.interactables.Count - 1)
+        {
+            EndOfGame();
+            return;
+        }
+
         currentScanAmount++;
 
         if (currentScanAmount == totalScanAmount)
-        {
             AdventureCompleted();
-        }
         else
-        {
-            scanText.enabled = true;
-            scanText.SetText(currentScanAmount + "/" + totalScanAmount + " things scanned");
-            StartCoroutine(TextGoAway());
-        }
-    }
-
-    private IEnumerator TextGoAway()
-    {
-        yield return new WaitForSeconds(textOnScreenTime);
-
-        scanText.enabled = false;
+            playerUI.SetTopText($"{currentScanAmount} / {totalScanAmount} things collected", false, true, false);
     }
 
     private void AdventureCompleted()
     {
-        scanText.enabled = true;
-        scanText.SetText("You did it!");
+        playerUI.SetTopText(baseReturnText, false, false, true);
+        frequencyMatch.EndGame = true;
+        bunkerCollider.SetActive(true);
+    }
+
+    private void EndOfGame()
+    {
+        Debug.Log("The End");
+
+        radarPlayerIcon.SetActive(false);
+        goober.SetActive(false);
+        playerUI.EndOfGameUI();
     }
 }

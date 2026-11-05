@@ -5,7 +5,9 @@ using UnityEngine.Rendering;
 
 public class ExitWarning : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI warningText;
+    [SerializeField] private PlayerUI playerUI;
+
+    [SerializeField] private string warningText;
     [SerializeField] private Volume volume;
     [SerializeField] private VolumeProfile volumeProfile;
     [SerializeField] private FilmGrain filmGrain;
@@ -23,14 +25,13 @@ public class ExitWarning : MonoBehaviour
         }
 
         filmGrain.intensity.Override(grainStartValue);
-        warningText.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            warningText.enabled = false;
+            playerUI.RemoveTopText();
             filmGrain.intensity.Override(grainStartValue);
         }
     }
@@ -39,7 +40,7 @@ public class ExitWarning : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            warningText.enabled = true;
+            playerUI.SetTopText(warningText, true, false, false);
             filmGrain.intensity.Override(grainEndValue);
         }
     }

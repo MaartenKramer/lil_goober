@@ -19,7 +19,7 @@ public class Interactable : MonoBehaviour
 
     public void IsScanned()
     {
-        GooberCollectManager.instance.ScanMade();
+        GooberCollectManager.instance.ScanMade(index);
         gameObject.GetComponent<SphereCollider>().enabled = false;
         frequencyMatch.radarIcons[index].SetActive(false);
     }

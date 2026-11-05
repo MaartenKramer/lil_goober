@@ -39,9 +39,13 @@ public class FrequencyMatchGame : MonoBehaviour
     [SerializeField] private Vector2 playerPos;
     [SerializeField] private Vector2 radarPos;
     [SerializeField] private Vector2 radarOffset;
+
+    public bool EndGame = false;
     
     void Start()
     {
+        EndGame = false;
+
         foreach (GameObject interactable in interactables)
         {
             GameObject newIcon = Instantiate(iconPrefab, interactable.transform.position, interactable.transform.rotation, radarParent.transform);
@@ -117,6 +121,7 @@ public class FrequencyMatchGame : MonoBehaviour
         foreach (GameObject radarIcon in radarIcons)
         {
             radarIcon.SetActive(radarIsOn);
+            radarIcon.GetComponent<Animator>().Play("Pulse", -1, 1);
         }
     }
    

@@ -1,21 +1,31 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] private PlayerUI playerUI;
+
     [SerializeField] private InputActionReference interactInput;
 
     [SerializeField] private bool canScan;
+    [SerializeField] private string failedScanText;
+
+    [SerializeField] private float scanCooldown = 1f;
 
     void Start()
     {
-        
+        canScan = false;
     }
 
     
     void Update()
     {
-        
+        if (!canScan && interactInput.action.IsPressed())
+        {
+            StartCoroutine(Cooldown());
+            playerUI.SetTopText(failedScanText, true, true, false);
+        } 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +42,7 @@ public class PlayerInteract : MonoBehaviour
         {
             if (canScan && interactInput.action.IsPressed())
             {
+                StartCoroutine(Cooldown());
                 canScan = false;
                 other.GetComponent<Interactable>().IsScanned();
             }
@@ -44,5 +55,14 @@ public class PlayerInteract : MonoBehaviour
         {
             canScan = false;
         }
+    }
+
+    private IEnumerator Cooldown()
+    {
+        interactInput.action.Disable();
+        
+        yield return new WaitForSeconds(scanCooldown);
+
+        interactInput.action.Enable();
     }
 }
