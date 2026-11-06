@@ -2834,6 +2834,8 @@ MonoBehaviour:
   screenshotInput: {fileID: 5744978969311662991, guid: d1793e3d0dc462047bb0c40fb7d546cd, type: 3}
   overlayAnimation: {fileID: 600985603}
   gooberCamera: {fileID: 1391205889}
+  autoScreenshots: 0
+  scanCooldown: 5
 --- !u!114 &503077492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3390,7 +3392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -600}
+  m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &600985603
@@ -9918,6 +9920,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 5228249949286177944, guid: 2a2285525a8a15a47b55dff09203560d, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Xbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228249949286177944, guid: 2a2285525a8a15a47b55dff09203560d, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5748811414631885531, guid: 2a2285525a8a15a47b55dff09203560d, type: 3}
       propertyPath: m_Height
       value: 0.5
