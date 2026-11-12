@@ -55,6 +55,26 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "GeneratorOn",
+                    "type": "Button",
+                    "id": "a364cc59-d72d-4e65-a758-63faa5f4557f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "GooberOn",
+                    "type": "Button",
+                    "id": "7eae5ca6-971d-49c6-9ea7-0d3dd1f3356d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -286,6 +306,28 @@
                     "processors": "",
                     "groups": ";Xbox",
                     "action": "Screenshot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90505b57-3891-4f63-b707-ffa7e903f80e",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard;Xbox",
+                    "action": "GeneratorOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "493e3200-c403-4acc-a4ab-f9c3fd554c4e",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard;Xbox",
+                    "action": "GooberOn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
