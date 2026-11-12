@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1106725148248391561}
   - component: {fileID: 924996383143101051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractableIcon
   m_TagString: InteractObject
   m_Icon: {fileID: 0}
