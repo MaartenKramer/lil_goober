@@ -14,6 +14,18 @@ public class TakeScreenshot : MonoBehaviour
 
     public Camera gooberCamera;
 
+    [SerializeField] private bool autoScreenshots = false;
+    [SerializeField] private float scanCooldown = 1f;
+
+    private void Start()
+    {
+        if (autoScreenshots)
+        {
+            StartCoroutine(AutomaticScreenshots());
+            screenshotInput.action.Disable();
+        }
+    }
+
     private void Update()
     {
         if (screenshotInput.action.WasPressedThisFrame())
@@ -56,8 +68,19 @@ public class TakeScreenshot : MonoBehaviour
         whereToShowScreenshot.sprite = screenshotSprite;
     }
 
-        private void PlayOverlayAnimation()
+    private void PlayOverlayAnimation()
     {
-        overlayAnimation.Play("Printing", -1, 0f);
+        overlayAnimation.speed = 0.75f;
+        overlayAnimation.Play("Printing", -1, 1f);
+    }
+
+    private IEnumerator AutomaticScreenshots()
+    {
+        TakeScreenshotAndShow();
+        PlayOverlayAnimation();
+
+        yield return new WaitForSeconds(scanCooldown);
+
+        StartCoroutine(AutomaticScreenshots());
     }
 }
