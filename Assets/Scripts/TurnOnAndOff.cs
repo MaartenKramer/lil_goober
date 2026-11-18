@@ -12,6 +12,8 @@ public class TurnOnAndOff : MonoBehaviour
     [SerializeField] private GameObject noPowerGoober;
     [SerializeField] private GameObject noPowerRadar;
     [SerializeField] private GameObject noGoober;
+    [SerializeField] private GameObject radarLine1;
+    [SerializeField] private GameObject radarLine2;
 
     void Start()
     {
@@ -38,6 +40,8 @@ public class TurnOnAndOff : MonoBehaviour
         noPowerGoober.SetActive(true);
         noPowerRadar.SetActive(true);
         noGoober.SetActive(true);
+        radarLine1.SetActive(false);
+        radarLine2.SetActive(false);
     }
 
     private void GeneratorOn()
@@ -50,5 +54,7 @@ public class TurnOnAndOff : MonoBehaviour
     {
         playerMovement.enabled = true;
         noGoober.SetActive(false);
+        radarLine1.SetActive(true);
+        radarLine2.SetActive(true);
     }
 }

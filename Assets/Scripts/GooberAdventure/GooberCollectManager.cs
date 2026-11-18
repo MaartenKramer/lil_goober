@@ -10,7 +10,7 @@ public class GooberCollectManager : MonoBehaviour
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private string baseReturnText;
 
-    [SerializeField] private int totalScanAmount = 4;
+    private int totalScanAmount = 0;
     [SerializeField] private int currentScanAmount = 0;
 
     [SerializeField] private GameObject bunkerCollider;
@@ -35,6 +35,7 @@ public class GooberCollectManager : MonoBehaviour
     void Start()
     {
         bunkerCollider.SetActive(false);
+        totalScanAmount = frequencyMatch.interactables.Count - 1;
     }
 
     public void ScanMade(int index)

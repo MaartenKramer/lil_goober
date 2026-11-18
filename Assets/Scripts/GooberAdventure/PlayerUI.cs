@@ -32,6 +32,7 @@ public class PlayerUI : MonoBehaviour
         textTransparency = 1;
         endText.enabled = false;
         endBackground.enabled = false;
+        topText.SetText("");
     }
 
     private void Update()

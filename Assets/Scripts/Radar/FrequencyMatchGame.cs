@@ -13,6 +13,10 @@ public class FrequencyMatchGame : MonoBehaviour
     [SerializeField] private FrequencyLine radarLine;
     [SerializeField] private FrequencyLine antennaLine;
 
+    [SerializeField] private GameObject radarBlue;
+    [SerializeField] private GameObject radarRed;
+    [SerializeField] private GameObject sweepLine;
+
     [SerializeField] private Knob amplitudeKnob;
     [SerializeField] private Knob wavelengthKnob;
 
@@ -61,6 +65,10 @@ public class FrequencyMatchGame : MonoBehaviour
         // Use bounds to set amplitudes of Frequency-Lines
         levelWidth = Mathf.Abs(maxBounds.x - minBounds.x);
         levelHeight = Mathf.Abs(maxBounds.y - minBounds.y);
+
+        radarBlue.SetActive(false);
+        radarRed.SetActive(true);
+        sweepLine.SetActive(false);
     }
 
     void Update()
@@ -115,14 +123,30 @@ public class FrequencyMatchGame : MonoBehaviour
 
     private void ToggleRadar()
     {
+        if (radarIsOn)
+        {
+            radarBlue.SetActive(false);
+            radarRed.SetActive(true);
+            sweepLine.SetActive(false);
+
+            foreach (GameObject radarIcon in radarIcons)
+                radarIcon.SetActive(false);
+        }
+        else
+        {
+            radarBlue.SetActive(true);
+            radarRed.SetActive(false);
+            sweepLine.SetActive(true);
+
+            foreach (GameObject radarIcon in radarIcons)
+            {
+                radarIcon.SetActive(true);
+                radarIcon.GetComponent<Animator>().Play("Pulse", -1, 1);
+            }
+        }
+
         // Flip the bool
         radarIsOn = !radarIsOn;
-        // set each radar-icon to match the radarOn-bool
-        foreach (GameObject radarIcon in radarIcons)
-        {
-            radarIcon.SetActive(radarIsOn);
-            radarIcon.GetComponent<Animator>().Play("Pulse", -1, 1);
-        }
     }
    
     private (Vector2, Vector2) GetLevelBounds()

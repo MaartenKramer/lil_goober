@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2546685309863070638}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.03579097, z: -0, w: 0.9993593}
+  m_LocalRotation: {x: 0, y: -0.03578905, z: 0, w: 0.99935937}
   m_LocalPosition: {x: 12.54, y: 0.08, z: 9.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   frequencyMatch: {fileID: 0}
-  index: 3
+  index: 2
 --- !u!1 &5648706517498435684
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3299705153549426909, guid: 1e9c9fad1ab4c484d912683995e91ade, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3299705153549426909, guid: 1e9c9fad1ab4c484d912683995e91ade, type: 3}
       propertyPath: m_LocalPosition.z

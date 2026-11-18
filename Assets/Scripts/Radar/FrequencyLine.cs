@@ -24,6 +24,9 @@ public class FrequencyLine : MonoBehaviour
 
         lineRenderer.positionCount = pointAmount;
 
+        amplitude = amplitude + 0.1f;
+        wavelength = wavelength + 0.1f;
+
         for (int currentPoint = 0; currentPoint < pointAmount; currentPoint++)
         {
             float progress = (float)currentPoint / (pointAmount - 1);
