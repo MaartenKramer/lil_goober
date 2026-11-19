@@ -6,34 +6,33 @@ using UnityEngine.InputSystem;
 
 public class TakeScreenshot : MonoBehaviour
 {
-    [SerializeField] Image whereToShowScreenshot;
+    [SerializeField] Image whereToShowNewScreenshot;
+    [SerializeField] Image whereToShowOldScreenshot;
 
-    public InputActionReference screenshotInput;
-
-    public Animator overlayAnimation;
+    [SerializeField] Slider oldScreenshotSlider;
 
     public Camera gooberCamera;
 
-    [SerializeField] private bool autoScreenshots = false;
-    [SerializeField] private float scanCooldown = 1f;
+    [SerializeField] private float sliderDownInterval = 0.05f;
+    [SerializeField] private float sliderDownValue = 0.05f;
 
     private void Start()
     {
-        if (autoScreenshots)
-        {
-            StartCoroutine(AutomaticScreenshots());
-            screenshotInput.action.Disable();
-        }
+        oldScreenshotSlider.value = 1;
+        TakeScreenshotAndShow();
+        StartCoroutine(SliderDown());
     }
 
     private void Update()
     {
-        if (screenshotInput.action.WasPressedThisFrame())
+        if (oldScreenshotSlider.value <= 0)
         {
+            StopAllCoroutines();
+            whereToShowOldScreenshot.sprite = whereToShowNewScreenshot.sprite;
             TakeScreenshotAndShow();
-
-            PlayOverlayAnimation();
-        }    
+            oldScreenshotSlider.value = 1;
+            StartCoroutine(SliderDown());
+        }
     }
 
     Texture2D RTImage(Camera gooberCamera)
@@ -58,29 +57,20 @@ public class TakeScreenshot : MonoBehaviour
 
     private void TakeScreenshotAndShow()
     {
-
-    
         Texture2D screenshot = RTImage(gooberCamera);
 
         Sprite screenshotSprite = Sprite.Create(screenshot, new Rect(0, 0, screenshot.width, screenshot.height), new Vector2(0.5f, 0.5f));
 
-        whereToShowScreenshot.enabled = true;
-        whereToShowScreenshot.sprite = screenshotSprite;
+        whereToShowNewScreenshot.enabled = true;
+        whereToShowNewScreenshot.sprite = screenshotSprite;
     }
 
-    private void PlayOverlayAnimation()
+    private IEnumerator SliderDown()
     {
-        overlayAnimation.speed = 0.75f;
-        overlayAnimation.Play("Printing", -1, 1f);
-    }
+        oldScreenshotSlider.value -= sliderDownValue;
 
-    private IEnumerator AutomaticScreenshots()
-    {
-        TakeScreenshotAndShow();
-        PlayOverlayAnimation();
+        yield return new WaitForSeconds(sliderDownInterval);
 
-        yield return new WaitForSeconds(scanCooldown);
-
-        StartCoroutine(AutomaticScreenshots());
+        StartCoroutine(SliderDown());
     }
 }
