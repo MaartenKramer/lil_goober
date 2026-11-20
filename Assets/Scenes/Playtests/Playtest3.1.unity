@@ -18594,7 +18594,6 @@ MonoBehaviour:
   frequencyMatch: {fileID: 898975360}
   playerUI: {fileID: 1422683184}
   baseReturnText: Return to the bunker
-  currentScanAmount: 0
   bunkerCollider: {fileID: 780987607}
   radarPlayerIcon: {fileID: 1759981712}
   goober: {fileID: 728666815}
@@ -25562,10 +25561,7 @@ MonoBehaviour:
   playerTransform: {fileID: 717147653}
   distancePlayerRadar: 0
   errorMargin: 7
-  playerPos: {x: 0, y: 0}
-  radarPos: {x: 0, y: 0}
   radarOffset: {x: 30, y: 30}
-  EndGame: 0
 --- !u!43 &901417642
 Mesh:
   m_ObjectHideFlags: 0
@@ -43582,9 +43578,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -54532,7 +54528,7 @@ PrefabInstance:
       objectReference: {fileID: 840661677}
     - target: {fileID: 5084106404421863754, guid: 696a72fc5dd62514b95daf2f5f508c05, type: 3}
       propertyPath: m_VersionIndex
-      value: 789
+      value: 804
       objectReference: {fileID: 0}
     - target: {fileID: 5711367529600268812, guid: 696a72fc5dd62514b95daf2f5f508c05, type: 3}
       propertyPath: m_Name
@@ -54556,7 +54552,7 @@ PrefabInstance:
       objectReference: {fileID: 1206003325}
     - target: {fileID: 7987225755620201191, guid: 696a72fc5dd62514b95daf2f5f508c05, type: 3}
       propertyPath: m_VersionIndex
-      value: 833
+      value: 848
       objectReference: {fileID: 0}
     - target: {fileID: 8369049670896208223, guid: 696a72fc5dd62514b95daf2f5f508c05, type: 3}
       propertyPath: m_Mesh

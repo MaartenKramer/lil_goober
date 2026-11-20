@@ -1,17 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using System.Collections;
-using UnityEngine.InputSystem;
 
 public class TakeScreenshot : MonoBehaviour
 {
-    [SerializeField] Image whereToShowNewScreenshot;
-    [SerializeField] Image whereToShowOldScreenshot;
+    [SerializeField] private Image whereToShowNewScreenshot;
+    [SerializeField] private Image whereToShowOldScreenshot;
 
     [SerializeField] Slider oldScreenshotSlider;
 
-    public Camera gooberCamera;
+    [SerializeField] private Camera gooberCamera;
 
     [SerializeField] private float sliderDownInterval = 0.05f;
     [SerializeField] private float sliderDownValue = 0.05f;

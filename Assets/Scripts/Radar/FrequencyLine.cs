@@ -15,7 +15,6 @@ public class FrequencyLine : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-
     public void DrawLine()
     {
         float xStart = xLimits.x;
@@ -24,8 +23,9 @@ public class FrequencyLine : MonoBehaviour
 
         lineRenderer.positionCount = pointAmount;
 
-        amplitude = amplitude + 0.1f;
-        wavelength = wavelength + 0.1f;
+        // Makes sure the line wont be completely horizontal
+        amplitude += 0.1f;
+        wavelength += 0.1f;
 
         for (int currentPoint = 0; currentPoint < pointAmount; currentPoint++)
         {

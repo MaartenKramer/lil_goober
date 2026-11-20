@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System;
 
 public class RadarSweepLine : MonoBehaviour
 {
@@ -8,11 +6,6 @@ public class RadarSweepLine : MonoBehaviour
 
     [SerializeField] private float rotationSpeed = 150f;
     [SerializeField] private float radarSize = 30f;
-
-    private void Start()
-    {
-        
-    }
 
     private void Update()
     {

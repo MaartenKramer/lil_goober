@@ -24,14 +24,10 @@ public class TurnOnAndOff : MonoBehaviour
     void Update()
     {
         if (generatorOnInput.action.IsPressed() && use)
-        {
             GeneratorOn();
-        }
 
         if (gooberOnInput.action.IsPressed() && use)
-        {
             GooberOn();
-        }
     }
 
     private void TurnEverythingOff()

@@ -1,6 +1,4 @@
 using UnityEngine;
-using TMPro;
-using System.Collections;
 
 public class GooberCollectManager : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class GooberCollectManager : MonoBehaviour
     [SerializeField] private string baseReturnText;
 
     private int totalScanAmount = 0;
-    [SerializeField] private int currentScanAmount = 0;
+    private int currentScanAmount = 0;
 
     [SerializeField] private GameObject bunkerCollider;
 
@@ -21,13 +19,9 @@ public class GooberCollectManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else
-        {
             Destroy(this);
-        }
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -57,14 +51,11 @@ public class GooberCollectManager : MonoBehaviour
     private void AdventureCompleted()
     {
         playerUI.SetTopText(baseReturnText, false, false, true);
-        frequencyMatch.EndGame = true;
         bunkerCollider.SetActive(true);
     }
 
     private void EndOfGame()
     {
-        Debug.Log("The End");
-
         radarPlayerIcon.SetActive(false);
         goober.SetActive(false);
         playerUI.EndOfGameUI();

@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 

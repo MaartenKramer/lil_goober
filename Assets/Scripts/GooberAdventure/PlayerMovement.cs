@@ -1,32 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using TMPro;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
-    public InputActionReference moveInput;
-    public InputActionReference rotateInput;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private InputActionReference moveInput;
+    [SerializeField] private InputActionReference rotateInput;
 
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float rotateSpeed = 12f;
 
-    Vector3 velocity;
-    public float gravity = -20f;
+    private Vector3 velocity;
+    [SerializeField] private float gravity = -20f;
 
-    public Transform groundCheck;
+    [SerializeField] private Transform groundCheck;
 
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-    bool isGrounded;
-
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float groundDistance = 0.4f;
+    [SerializeField] private LayerMask groundMask;
+    private bool isGrounded;
 
     void Update()
     {
@@ -41,9 +32,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // checks if player is on ground
 
         if (isGrounded && velocity.y < 0) // resets velocity when player is grounded
-        {
             velocity.y = -2f;
-        }
     }
 
     private void RotatePlayer()

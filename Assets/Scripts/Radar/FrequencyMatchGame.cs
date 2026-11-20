@@ -1,12 +1,7 @@
-#define USE_RADARPOS
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.ProBuilder;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
-using Math = System.Math;
 
 public class FrequencyMatchGame : MonoBehaviour
 {
@@ -40,16 +35,12 @@ public class FrequencyMatchGame : MonoBehaviour
 
     private bool radarIsOn = false;
 
-    [SerializeField] private Vector2 playerPos;
-    [SerializeField] private Vector2 radarPos;
+    private Vector2 playerPos;
+    private Vector2 radarPos;
     [SerializeField] private Vector2 radarOffset;
-
-    public bool EndGame = false;
     
     void Start()
     {
-        EndGame = false;
-
         foreach (GameObject interactable in interactables)
         {
             GameObject newIcon = Instantiate(iconPrefab, interactable.transform.position, interactable.transform.rotation, radarParent.transform);
@@ -79,46 +70,27 @@ public class FrequencyMatchGame : MonoBehaviour
         // KNOB VALUES [0..1].. convert to coordinates
         antennaLine.amplitude = amplitudeKnob.knobValue;
         antennaLine.wavelength = wavelengthKnob.knobValue;
+
         // Set knob-values and draw
         radarLine.amplitude = (playerPos.x + levelWidth/2) / levelWidth;
         radarLine.wavelength = (playerPos.y + levelHeight/2) / levelHeight;
         radarLine.DrawLine();
         antennaLine.DrawLine();
+
         // Get coordinates from the knobs..
         var x = amplitudeKnob.knobValue * levelWidth;
         var y = wavelengthKnob.knobValue * levelHeight;
         radarPos = new Vector2(x, y) - radarOffset;
-
-
-#if (USE_RADARPOS)
 
         distancePlayerRadar = Vector2.Distance(playerPos, radarPos);
 
         if (distancePlayerRadar <= errorMargin)
         {
             if (!radarIsOn)
-            {
                 ToggleRadar();
-            }
         }
         else if (radarIsOn)
-        {
             ToggleRadar();
-        }
-#else
-
-        // If the two lines line up close enough..          (TODO: COULD JUST USE DISTANCE FUNCTION FOR PLAYER.POS && RADAR.POS)
-        if (Math.Abs(radarLine.amplitude - antennaLine.amplitude) < errorMargin 
-            && Math.Abs(radarLine.wavelength - antennaLine.wavelength) < errorMargin)
-        {
-            amplitudeTrigger.enabled = false;
-            wavelengthTrigger.enabled = false;
-
-            foreach (GameObject radarIcon in radarIcons)
-                radarIcon.SetActive(true);
-        }
-#endif
-
 }
 
     private void ToggleRadar()

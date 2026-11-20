@@ -8,7 +8,7 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField] private InputActionReference interactInput;
 
-    [SerializeField] private bool canScan;
+    private bool canScan;
     [SerializeField] private string failedScanText;
 
     [SerializeField] private float scanCooldown = 1f;
@@ -17,7 +17,6 @@ public class PlayerInteract : MonoBehaviour
     {
         canScan = false;
     }
-
     
     void Update()
     {
@@ -31,9 +30,7 @@ public class PlayerInteract : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "InteractObject")
-        {
             canScan = true;
-        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -52,9 +49,7 @@ public class PlayerInteract : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "InteractObject")
-        {
             canScan = false;
-        }
     }
 
     private IEnumerator Cooldown()

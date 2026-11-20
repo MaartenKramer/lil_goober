@@ -1,7 +1,4 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.Rendering;
 
 public class ExitWarning : MonoBehaviour
 {
